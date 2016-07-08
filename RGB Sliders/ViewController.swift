@@ -18,13 +18,20 @@ class ViewController: UIViewController {
     // reference to blue slider
     @IBOutlet weak var blueSlider: UISlider!
     
+    // reference to square to show shade of picker
+    @IBOutlet weak var colorSquare: UIView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        // update background color when the view loads
+        // update square color when the view loads
         updateBackgroundColor()
+        
+        // make square visible by adding a border
+        colorSquare.layer.borderColor = UIColor.blackColor().CGColor
+        colorSquare.layer.borderWidth = 1
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,7 +41,7 @@ class ViewController: UIViewController {
 
     // comment to learn about git/version control
 
-    // update background color when slider values are changed
+    // update square color when slider values are changed
     @IBAction func updateBackgroundColor() {
         
         // color values from slider
@@ -42,9 +49,9 @@ class ViewController: UIViewController {
         let green = CGFloat(greenSlider.value)
         let blue = CGFloat(blueSlider.value)
         
-        // set backgound color based on values of slider
+        // set square color based on values of slider
         // alpha = 1 for background to be completely opaque
-        view.backgroundColor = UIColor(red: red, green: green, blue: blue, alpha: 1)
+        colorSquare.backgroundColor = UIColor(red: red, green: green, blue: blue, alpha: 1)
     }
     
 }
