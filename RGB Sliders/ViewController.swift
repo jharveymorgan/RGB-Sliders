@@ -26,6 +26,12 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        // load saved values from UserDefaults
+        let defaults = NSUserDefaults.standardUserDefaults()
+        redSlider.value = defaults.floatForKey("red")
+        greenSlider.value = defaults.floatForKey("green")
+        blueSlider.value = defaults.floatForKey("blue")
+        
         // update square color when the view loads
         updateBackgroundColor()
         
@@ -52,6 +58,34 @@ class ViewController: UIViewController {
         // set square color based on values of slider
         // alpha = 1 for background to be completely opaque
         colorSquare.backgroundColor = UIColor(red: red, green: green, blue: blue, alpha: 1)
+        
+        // save last color
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setFloat(redSlider.value, forKey: "red")
+        defaults.setFloat(greenSlider.value, forKey: "green")
+        defaults.setFloat(blueSlider.value, forKey: "blue")
+        // to make sure the values are saved immediately
+        defaults.synchronize()
+    }
+    
+    // function whenever a segue is about to happen
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "openColor") {
+            // reference to second view controller
+            let newViewController = segue.destinationViewController
+            // change second view controller background color to color of the square
+            newViewController.view.backgroundColor = colorSquare.backgroundColor
+        }
+    }
+    
+    // reset slider values to 0 when reset button is tapped
+    @IBAction func resetButton() {
+        redSlider.value = 0
+        greenSlider.value = 0
+        blueSlider.value = 0
+        
+        // update square color with new values
+        updateBackgroundColor()
     }
     
 }

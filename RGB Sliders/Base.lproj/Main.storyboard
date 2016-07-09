@@ -46,7 +46,14 @@
                                 <rect key="frame" x="137" y="345" width="46" height="30"/>
                                 <state key="normal" title="Open"/>
                                 <connections>
-                                    <segue destination="J79-mD-J8D" kind="show" id="xEl-yu-w0j"/>
+                                    <segue destination="J79-mD-J8D" kind="show" identifier="openColor" id="xEl-yu-w0j"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N9q-DT-0sx">
+                                <rect key="frame" x="137" y="383" width="46" height="30"/>
+                                <state key="normal" title="Reset"/>
+                                <connections>
+                                    <action selector="resetButton" destination="BYZ-38-t0r" eventType="touchUpInside" id="AF3-mD-yjT"/>
                                 </connections>
                             </button>
                         </subviews>
